@@ -508,4 +508,9 @@ describe('Helpers: Utils', () => {
     child.obj = obj;
     expect(Utils.JSONStringifyCircular(obj)).to.be.eq('{\n  "a": 1,\n  "child": {}\n}');
   });
+
+  it('Should check if the given date is older than X (ex: 1) units (ex: hours) from now', () => {
+    expect(Utils.isDateOlderThanXUnits(moment(), 1, 'hours')).to.be.eq(false);
+    expect(Utils.isDateOlderThanXUnits(moment().subtract(2, 'hours'), 1, 'hours')).to.be.eq(true);
+  });
 });
