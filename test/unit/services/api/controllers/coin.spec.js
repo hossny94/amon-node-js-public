@@ -18,15 +18,8 @@ describe('Controller: Coin', () => {
   });
 
   describe('getCoinByCode', () => {
-    it('should get coin (no price) by code', async () => {
+    it('should get coin by code', async () => {
       const coinCode = 'BTC';
-      const coin = await CoinController.getCoinByCode(coinCode);
-      expect(coin.code).to.eq(coinCode);
-      expect(Object.keys(coin).length).to.eq(2);
-    });
-
-    it('should get coin (with price) by code', async () => {
-      const coinCode = 'ETH';
       const coin = await CoinController.getCoinByCode(coinCode);
       expect(coin.code).to.eq(coinCode);
       expect(Object.keys(coin).length).to.eq(3);
