@@ -56,12 +56,12 @@ const CoinRouter = {
      *
      * @apiBody {String} name Coin name.
      * @apiBody {String} code Coin unique code.
-     * 
+     *
      * @apiSuccess {String} name    Created coin name.
      * @apiSuccess {String} code    Created coin code.
      * @apiSuccess {String} [price] Created coin price.
      */
-     router.put('/createCoin', CoinRouter.createCoin);
+    router.put('/createCoin', CoinRouter.createCoin);
 
     return router;
   },
