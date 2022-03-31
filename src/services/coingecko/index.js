@@ -14,7 +14,7 @@ const CoinGeckoService = {
     if (!response || response.status !== 200) errors.throwError('Failed to fetch coins list from CoinGecko');
     const coinsList = response.data;
     const coin = coinsList.filter((item) => item.symbol.toUpperCase() === coinCode)[0];
-    if (!coin || !coin.id) errors.throwError('Unknown coin code');
+    if (!coin || !coin.id) errors.assertExposable(false, 'unknown_coin_code');
     return coin.id;
   },
 

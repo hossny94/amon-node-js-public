@@ -38,14 +38,14 @@ describe('Controller: Coin', () => {
     });
   });
 
-  describe('getCoinByCode', () => {
+  describe('createCoin', () => {
     it('should create a new coin', async () => {
       const coinObj = {
         name: 'Terra',
         code: 'LUNA',
       };
       const coin = await CoinController.createCoin(coinObj);
-      expect(coin.code).to.eq(coinCode);
+      expect(coin.code).to.eq(coinObj.code);
       expect(Object.keys(coin).length).to.eq(3);
     });
 
