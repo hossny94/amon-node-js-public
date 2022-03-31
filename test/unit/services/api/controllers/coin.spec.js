@@ -18,10 +18,16 @@ describe('Controller: Coin', () => {
   });
 
   describe('getCoinByCode', () => {
-    it('should get coin by code', async () => {
+    it('should get coin (no price) by code', async () => {
       const coinCode = 'BTC';
       const coin = await CoinController.getCoinByCode(coinCode);
+      expect(coin.code).to.eq(coinCode);
+      expect(Object.keys(coin).length).to.eq(2);
+    });
 
+    it('should get coin (with price) by code', async () => {
+      const coinCode = 'ETH';
+      const coin = await CoinController.getCoinByCode(coinCode);
       expect(coin.code).to.eq(coinCode);
       expect(Object.keys(coin).length).to.eq(3);
     });
@@ -29,6 +35,26 @@ describe('Controller: Coin', () => {
     it('should fail get coin by code', async () => {
       const coinCode = 'AMN';
       expect(CoinController.getCoinByCode(coinCode)).to.be.rejectedWith(Error, 'unknown_coin_code');
+    });
+  });
+
+  describe('getCoinByCode', () => {
+    it('should create a new coin', async () => {
+      const coinObj = {
+        name: 'Terra',
+        code: 'LUNA',
+      };
+      const coin = await CoinController.createCoin(coinObj);
+      expect(coin.code).to.eq(coinCode);
+      expect(Object.keys(coin).length).to.eq(3);
+    });
+
+    it('should fail to create a new coin with an existing code', async () => {
+      const coinObj = {
+        name: 'Bitcoin',
+        code: 'BTC',
+      };
+      expect(CoinController.createCoin(coinObj)).to.be.rejectedWith(Error, 'conflict_coin_code');
     });
   });
 });
