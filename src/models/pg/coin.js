@@ -45,5 +45,9 @@ module.exports = function (sequelize, DataTypes) {
     return Coin.findOne(Object.assign({ where: { code } }, tOpts));
   };
 
+  Coin.createCoin = function (coinObj) {
+    return Coin.create(coinObj);
+  };
+
   return Coin;
 };
