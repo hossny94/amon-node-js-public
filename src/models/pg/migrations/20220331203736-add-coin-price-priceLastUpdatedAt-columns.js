@@ -1,21 +1,19 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async (query, transaction) => {
     /**
      * Add altering commands here.
      *
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-  },
 
-  down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
-  }
+    const sql = `
+      ALTER TABLE "Coin"
+      ADD price VARCHAR(255);
+      ADD priceLastUpdatedAt DATE;
+    `;
+    await transaction.sequelize.query(sql, { raw: true, transaction });
+  },
 };
