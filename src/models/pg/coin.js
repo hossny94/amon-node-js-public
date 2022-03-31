@@ -18,6 +18,14 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      price: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      priceLastUpdatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     {
       freezeTableName: true,
