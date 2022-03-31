@@ -17,7 +17,7 @@ describe('Service: CoinGecko', () => {
     it('should get coin price by code', async () => {
       const coinCode = 'ETH';
       const price = await CoinGeckoService.getCoinPrice(coinCode);
-      expect(price).to.be.a('string')
+      expect(price).to.be.a('string');
     });
 
     it('should fail to get coin price by code', async () => {
