@@ -1,4 +1,5 @@
 const CONFIG = require('../../../config');
+const errors = require('../../helpers/errors');
 const AxiosService = require('../axios/index');
 
 const CoinGeckoService = {

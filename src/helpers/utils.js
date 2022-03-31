@@ -239,6 +239,10 @@ const Utils = {
 
     return str;
   },
+
+  isDateOlderThanXUnits(date, val, unit) {
+    return moment(date).isBefore(moment().subtract(val, unit));
+  },
 };
 
 module.exports = Utils;
