@@ -15,14 +15,14 @@ const CoinGeckoService = {
     const coinsList = response.data;
     const coin = coinsList.filter((item) => item.symbol.toUpperCase() === coinCode)[0];
     if (!coin || !coin.id) errors.throwError('Unknown coin code');
-    return coin;
+    return coin.id;
   },
 
   async getCoinPriceById(coinId) {
     const url = `${CONFIG.SERVICES.COINGECKO.BASE_URL}/${coinId}`;
     const response = await AxiosService.fetch(url);
     if (!response || response.status !== 200) errors.throwError('Failed to fetch coin price from CoinGecko');
-    return response.data.market_data.current_price.usd; // TODO: Check default currency
+    return response.data.market_data.current_price.usd.toString(); // TODO: Check default currency
   },
 };
 
