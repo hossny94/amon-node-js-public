@@ -64,5 +64,15 @@ describe('Controller: Coin', () => {
       };
       expect(CoinController.createCoin(coinObj)).to.be.rejectedWith(Error, 'conflict_coin_code');
     });
+
+    it('should create a new coin without a price because of dummy name and code', async () => {
+      const coinObj = {
+        name: 'DummyName',
+        code: 'DummyCode',
+      };
+      const coin = await CoinController.createCoin(coinObj);
+      expect(coin.code).to.eq(coinObj.code);
+      expect(Object.keys(coin).length).to.eq(2);
+    });
   });
 });
