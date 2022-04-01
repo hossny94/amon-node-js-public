@@ -19,7 +19,7 @@ const CoinController = {
 
     if (lastUpdateOlderThanOneHourAgo || !price) {
       try {
-        const price = await CoinGeckoService.getCoinPrice(code);
+        const price = await CoinGeckoService.getCoinPrice(coin);
         coin.price = price;
         coin.priceLastUpdatedAt = moment();
         await coin.save();
@@ -42,7 +42,7 @@ const CoinController = {
 
     // Fetch coin price
     try {
-      const price = await CoinGeckoService.getCoinPrice(code);
+      const price = await CoinGeckoService.getCoinPrice(coinObj);
       coinObj = {
         ...coinObj,
         price,
