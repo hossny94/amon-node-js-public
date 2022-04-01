@@ -9,7 +9,7 @@ const CoinRouter = {
   }),
 
   schemaCreateCoin: Joi.object({
-    name: Joi.string().min(3).uppercase().max(50),
+    name: Joi.string().min(3).max(50),
     code: Joi.string().min(3).uppercase().max(5),
   }),
 

@@ -7,9 +7,8 @@ const CoinGeckoService = require('../../coingecko/index');
 
 const CoinController = {
   async getCoinByCode(coinCode) {
-    const code = coinCode.toUpperCase();
     // Check if coin already exists
-    const coin = await Models.Coin.findByCoinCode(code);
+    const coin = await Models.Coin.findByCoinCode(coinCode);
     errors.assertExposable(coin, 'unknown_coin_code');
 
     // Fetch coin price if needed
@@ -33,9 +32,8 @@ const CoinController = {
   },
 
   async createCoin(coinObj) {
-    const code = coinObj.code.toUpperCase();
     // Check if coin already exists
-    let coin = await Models.Coin.findByCoinCode(code);
+    let coin = await Models.Coin.findByCoinCode(coinObj.code);
     errors.assertExposable(!coin, 'conflict_coin_code');
 
     // TODO: Add coin name validation using CoinGecko if needed
